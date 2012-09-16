@@ -28,7 +28,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li class="sort_by_name"><a href="#">Sort by Name</a></li>
-              <li><a class="sort_by_score" href="#">Sort by Date of Birth</a></li>
+              <li><a class="sort_by_birthdate" href="#">Sort by Date of Birth</a></li>
               <li class="divider"></li>
               <li class="reset_data"><a href="#">Reset Data</a></li>
             </ul>
@@ -38,17 +38,22 @@
 </template>
 
 <template name="leaderboard">
-  <div class="input-append">
-    <input id="player_name" type="text" placeholder="New dog"/>
+  <form class="input-append">
+    <input id="player_name" type="text" placeholder="Name"/>
+      <select id="dog_color">
+          <option value="black">Black</option>
+          <option value="brown">Brown</option>
+          <option value="red" selected="selected">Red</option>
+      </select>
+    <input id="dog_birthdate" type="text" placeholder="Date of birth"/>
     <button id="add_button" class="btn" type="button">Add Flat</button>
-  </div>
+  </form>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Name</th>
+        <th><a href="#" class="sort_by_name" rel="tooltip" data-original-title="Sort by Name">Name</a></th>
         <th>Color</th>
-        <th>Birthdate</th>
-        <th style="width: 20px"></th>
+        <th><a href="#" class="sort_by_birthdate" rel="tooltip" data-original-title="Sort by Date of Birth">Birthdate</th>
         <th style="width: 20px"></th>
       </tr>
     </thead>
@@ -65,8 +70,7 @@
     <td class="name">{{name}}</td>
     <td class="color">{{color}}</td>
     <td class="date">{{date}}</td>
-    <td><i class="increment icon-plus" rel="tooltip" data-original-title="Add five points to the score"></i></td>
-    <td><i class="remove icon-remove" rel="tooltip" data-original-title="Delete player"></i></td>
+    <td><i class="remove icon-remove" rel="tooltip" data-original-title="Delete dog"></i></td>
   </tr>
   {{enable_tooltips}}
 </template>

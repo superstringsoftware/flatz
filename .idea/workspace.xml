@@ -23,28 +23,27 @@
       <file leaf-file-name="flatz.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flatz.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="31" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+            <state line="43" column="36" selection-start="1257" selection-end="1257" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flatz.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="flatz.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/flatz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="36" selection-start="1669" selection-end="1669" vertical-scroll-proportion="0.78502417">
+            <state line="48" column="57" selection-start="1466" selection-end="1466" vertical-scroll-proportion="-30.0">
               <folding>
                 <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#template#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#template#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flatz.less" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="flatz.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/flatz.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="4" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0">
+            <state line="13" column="2" selection-start="191" selection-end="191" vertical-scroll-proportion="0.15402843">
               <folding />
             </state>
           </provider>
@@ -60,9 +59,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/client/flatz.less" />
-        <option value="$PROJECT_DIR$/flatz.coffee" />
         <option value="$PROJECT_DIR$/client/flatz.html" />
+        <option value="$PROJECT_DIR$/flatz.coffee" />
+        <option value="$PROJECT_DIR$/client/flatz.less" />
       </list>
     </option>
   </component>
@@ -230,27 +229,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/flatz.less">
+    <entry file="file://$PROJECT_DIR$/client/flatz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="4" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="48" column="57" selection-start="1466" selection-end="1466" vertical-scroll-proportion="-30.0">
+          <folding>
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#template#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flatz.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="31" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+        <state line="43" column="36" selection-start="1257" selection-end="1257" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/flatz.html">
+    <entry file="file://$PROJECT_DIR$/client/flatz.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="36" selection-start="1669" selection-end="1669" vertical-scroll-proportion="0.78502417">
-          <folding>
-            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#template#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#template#1;n#!!top" expanded="true" />
-          </folding>
+        <state line="13" column="2" selection-start="191" selection-end="191" vertical-scroll-proportion="0.15402843">
+          <folding />
         </state>
       </provider>
     </entry>

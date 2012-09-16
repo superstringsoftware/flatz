@@ -1,7 +1,7 @@
-Players = new Meteor.Collection 'dogs'
+Dogs = new Meteor.Collection 'dogs'
 
 reset_data = -> # Executes on both client and server.
-  Players.remove {}
+  Dogs.remove {}
 
   dogs_tmp = [
     ['Meeka','brown','21/12/2002'],
@@ -10,7 +10,7 @@ reset_data = -> # Executes on both client and server.
   ]
 
   for dg in dogs_tmp
-    Players.insert
+    Dogs.insert
       name: dg[0]
       color: dg[1]
       date: dg[2]
@@ -20,28 +20,32 @@ if Meteor.is_client
   _.extend Template.navbar,
     events:
       'click .sort_by_name': -> Session.set 'sort_by_name', true
-      'click .sort_by_score': -> Session.set 'sort_by_name', false
+      'click .sort_by_birthdate': -> Session.set 'sort_by_name', false
       'click .reset_data': -> reset_data()
 
   _.extend Template.leaderboard,
     players: ->
-      sort = if Session.get('sort_by_name') then name: 1 else score: -1
-      Players.find {}, sort: sort
+      sort = if Session.get('sort_by_name') then name: 1 else date: -1
+      Dogs.find {}, sort: sort
 
     events:
+      'click .sort_by_name': -> Session.set 'sort_by_name', true
+      'click .sort_by_birthdate': -> Session.set 'sort_by_name', false
+
       'click #add_button, keyup #player_name': (evt) ->
         return if evt.type is 'keyup' and evt.which isnt 13 # Key is not Enter.
         input = $('#player_name')
         if input.val()
-          Players.insert
+          Dogs.insert
             name: input.val()
-            score: Math.floor(Math.random() * 10) * 5
+            color: $('#dog_color').val()
+            date: $('#dog_birthdate').val()
           input.val ''
+          $('#dog_birthdate').val ''
 
   _.extend Template.player,
     events:
-      'click .increment': -> Players.update @_id, $inc: {score: 5}
-      'click .remove': -> Players.remove @_id
+      'click .remove': -> Dogs.remove @_id
       'click': -> $('.tooltip').remove()  # To prevent zombie tooltips.
 
     enable_tooltips: ->
@@ -52,4 +56,4 @@ if Meteor.is_client
 # On server startup, create some players if the database is empty.
 if Meteor.is_server
   Meteor.startup ->
-    reset_data() if Players.find().count() is 0
+    reset_data() if Dogs.find().count() is 0
