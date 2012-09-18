@@ -1,17 +1,10 @@
-Dogs = undefined
-Kennels = undefined
-Persons = undefined
-reset_data = undefined
+#because of a stupid move had to decompile from javascript, so it's not real coffee
+
 Dogs = new Meteor.Collection("dogs")
 Persons = new Meteor.Collection("persons")
 Kennels = new Meteor.Collection("kennels")
+
 reset_data = ->
-  dg = undefined
-  dogs_tmp = undefined
-  kennels_tmp = undefined
-  _i = undefined
-  _len = undefined
-  _results = undefined
   Dogs.remove {}
   Persons.remove {}
   Kennels.remove {}
