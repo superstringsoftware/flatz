@@ -6,3 +6,7 @@
 autopublish
 coffeescript
 less
+accounts-ui
+accounts-google
+accounts-facebook
+accounts-password

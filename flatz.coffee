@@ -4,27 +4,45 @@ Dogs = new Meteor.Collection("dogs")
 Persons = new Meteor.Collection("persons")
 Kennels = new Meteor.Collection("kennels")
 
+Dogs.allow 
+  remove:
+    () -> 
+      true
+
+#creating admin user
+create_admin = ->
+  console.log("create_admin called")
+  if Meteor.users.find({name: "admin"}).count() is 0
+    console.log "Creating admin"
+    Meteor.createUser({username: "admin",email: "aantich@gmail.com",password: "admin"})
+
+
+#prepopulating stuff
 reset_data = ->
   Dogs.remove {}
   Persons.remove {}
   Kennels.remove {}
   kennels_tmp = [["Солнце Балтии", "Solntse Baltii", "Наталья Чижова", "Санкт-Петербург", "http://www.solntsebaltii2007.narod.ru/"]]
   dogs_tmp = [["Meeka", "brown", "21/12/2002"], ["Uta", "black", "30/10/2004"], ["Toma", "brown", "21/08/2007"]]
-  _results = []
-  _i = 0
-  _len = dogs_tmp.length
 
-  while _i < _len
-    dg = dogs_tmp[_i]
-    _results.push Dogs.insert(
+  for dg in dogs_tmp
+  
+    Dogs.insert
       name: dg[0]
       color: dg[1]
       date: dg[2]
-    )
-    _i++
-  _results
+    
+  for kn in kennels_tmp
+    Kennels.insert
+      ru_name: kn[0]
+      name: kn[1]
+      owner: kn[2]
+      city: kn[3]
+      url: kn[4]
+  console.log Kennels
 
 if Meteor.is_client
+  create_admin()
   _.extend Template.navbar,
     events:
       "click .sort_by_name": ->
@@ -80,4 +98,7 @@ if Meteor.is_client
 
 if Meteor.is_server
   Meteor.startup ->
+    console.log("Firing up")
     reset_data()  if Dogs.find().count() is 0
+    #create_admin
+
