@@ -1,59 +1,90 @@
-Dogs = new Meteor.Collection 'dogs'
-
-reset_data = -> # Executes on both client and server.
+Dogs = undefined
+Kennels = undefined
+Persons = undefined
+reset_data = undefined
+Dogs = new Meteor.Collection("dogs")
+Persons = new Meteor.Collection("persons")
+Kennels = new Meteor.Collection("kennels")
+reset_data = ->
+  dg = undefined
+  dogs_tmp = undefined
+  kennels_tmp = undefined
+  _i = undefined
+  _len = undefined
+  _results = undefined
   Dogs.remove {}
+  Persons.remove {}
+  Kennels.remove {}
+  kennels_tmp = [["Солнце Балтии", "Solntse Baltii", "Наталья Чижова", "Санкт-Петербург", "http://www.solntsebaltii2007.narod.ru/"]]
+  dogs_tmp = [["Meeka", "brown", "21/12/2002"], ["Uta", "black", "30/10/2004"], ["Toma", "brown", "21/08/2007"]]
+  _results = []
+  _i = 0
+  _len = dogs_tmp.length
 
-  dogs_tmp = [
-    ['Meeka','brown','21/12/2002'],
-    ['Uta','black','30/10/2004'],
-    ['Toma','brown','21/08/2007']
-  ]
-
-  for dg in dogs_tmp
-    Dogs.insert
+  while _i < _len
+    dg = dogs_tmp[_i]
+    _results.push Dogs.insert(
       name: dg[0]
       color: dg[1]
       date: dg[2]
+    )
+    _i++
+  _results
 
 if Meteor.is_client
-
   _.extend Template.navbar,
     events:
-      'click .sort_by_name': -> Session.set 'sort_by_name', true
-      'click .sort_by_birthdate': -> Session.set 'sort_by_name', false
-      'click .reset_data': -> reset_data()
+      "click .sort_by_name": ->
+        Session.set "sort_by_name", true
+
+      "click .sort_by_birthdate": ->
+        Session.set "sort_by_name", false
+
+      "click .reset_data": ->
+        reset_data()
 
   _.extend Template.leaderboard,
     players: ->
-      sort = if Session.get('sort_by_name') then name: 1 else date: -1
-      Dogs.find {}, sort: sort
+      sort = undefined
+      sort = (if Session.get("sort_by_name") then name: 1 else date: -1)
+      Dogs.find {},
+        sort: sort
+
 
     events:
-      'click .sort_by_name': -> Session.set 'sort_by_name', true
-      'click .sort_by_birthdate': -> Session.set 'sort_by_name', false
+      "click .sort_by_name": ->
+        Session.set "sort_by_name", true
 
-      'click #add_button, keyup #player_name': (evt) ->
-        return if evt.type is 'keyup' and evt.which isnt 13 # Key is not Enter.
-        input = $('#player_name')
+      "click .sort_by_birthdate": ->
+        Session.set "sort_by_name", false
+
+      "click #add_button, keyup #player_name": (evt) ->
+        input = undefined
+        return  if evt.type is "keyup" and evt.which isnt 13
+        input = $("#player_name")
         if input.val()
           Dogs.insert
             name: input.val()
-            color: $('#dog_color').val()
-            date: $('#dog_birthdate').val()
-          input.val ''
-          $('#dog_birthdate').val ''
+            color: $("#dog_color").val()
+            date: $("#dog_birthdate").val()
+
+          input.val ""
+          $("#dog_birthdate").val ""
 
   _.extend Template.player,
     events:
-      'click .remove': -> Dogs.remove @_id
-      'click': -> $('.tooltip').remove()  # To prevent zombie tooltips.
+      "click .remove": ->
+        Dogs.remove @_id
+
+      click: ->
+        $(".tooltip").remove()
 
     enable_tooltips: ->
-      # Update tooltips after the template has rendered.
-      _.defer -> $('[rel=tooltip]').tooltip()
-      ''
+      _.defer ->
+        $("[rel=tooltip]").tooltip()
 
-# On server startup, create some players if the database is empty.
+      ""
+
 if Meteor.is_server
   Meteor.startup ->
-    reset_data() if Dogs.find().count() is 0
+    reset_data()  if Dogs.find().count() is 0

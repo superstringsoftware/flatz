@@ -19,6 +19,10 @@
     {{> leaderboard}}
   </div>
 
+  <div class="container">
+      {{> logs}}
+  </div>
+
 </body>
 
 <template name="navbar">
@@ -73,4 +77,25 @@
     <td><i class="remove icon-remove" rel="tooltip" data-original-title="Delete dog"></i></td>
   </tr>
   {{enable_tooltips}}
+</template>
+
+<template name="logs">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>{{log_messages}}</td>
+        </tr>
+        </tbody>
+    </table>
+</template>
+
+<template name="log">
+    <tr class="log">
+        <td class="message">{{message}}</td>
+    </tr>
 </template>
