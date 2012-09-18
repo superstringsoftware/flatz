@@ -4,6 +4,8 @@ Dogs = new Meteor.Collection("dogs")
 Persons = new Meteor.Collection("persons")
 Kennels = new Meteor.Collection("kennels")
 
+#TLogger = new TelescopeLogger
+
 #setting permissions on the dogs collection so that only admin can remove
 Dogs.allow {
   remove:
@@ -19,7 +21,7 @@ Dogs.allow {
     () -> true
   }
 
-#creating admin user (server only!)
+#creating admin user (server only - sends an email to activate)
 create_admin = ->
   console.log("create_admin called")
   if Meteor.users.find({username: "admin"}).count() is 0
@@ -65,6 +67,8 @@ if Meteor.is_client
 
       "click .reset_data": ->
         reset_data()
+        #console.log TLogger
+        TLogger.log  "reset_date called on the client"
 
   _.extend Template.leaderboard,
     players: ->
@@ -111,6 +115,7 @@ if Meteor.is_client
 if Meteor.is_server
   Meteor.startup ->
     console.log("Firing up")
+    TLogger.log("Firing up in TelescopeLogger")
     reset_data()  if Dogs.find().count() is 0
     create_admin()
 
