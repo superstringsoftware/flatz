@@ -20,9 +20,17 @@
     {{> leaderboard}}
   </div>
 
+<div class="container">
+  <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
+  simple collapsible
+  </button>
+</div>
+ 
+<div id="demo" class="collapse in">
   <div class="container">
       {{> logs}}
   </div>
+</div>
 
 </body>
 
@@ -84,19 +92,21 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th>Timestamp</th>
             <th>Message</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-        <td>{{log_messages}}</td>
-        </tr>
+        {{#each log_messages}}
+          {{> log}}
+        {{/each}}
         </tbody>
     </table>
 </template>
 
 <template name="log">
     <tr class="log">
+        <td class"timestamp">{{timestamp}}</td>
         <td class="message">{{message}}</td>
     </tr>
 </template>

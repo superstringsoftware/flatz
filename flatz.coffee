@@ -68,7 +68,7 @@ if Meteor.is_client
       "click .reset_data": ->
         reset_data()
         #console.log TLogger
-        TLogger.log  "reset_date called on the client"
+        TelescopeLogger.log  "reset_date called on the client"
 
   _.extend Template.leaderboard,
     players: ->
@@ -112,10 +112,15 @@ if Meteor.is_client
 
       ""
 
+  _.extend Template.logs,
+    log_messages: ->
+      TelescopeLogger.getLogs
+        timestamp: -1
+
 if Meteor.is_server
   Meteor.startup ->
     console.log("Firing up")
-    TLogger.log("Firing up in TelescopeLogger")
+    TelescopeLogger.log ("Firing up in TelescopeLogger")
     reset_data()  if Dogs.find().count() is 0
     create_admin()
 
