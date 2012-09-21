@@ -17,6 +17,10 @@
   </div>
 
   <div class="container">
+    {{> kennels_list}}
+  </div>
+
+  <div class="container">
     {{> leaderboard}}
   </div>
 
@@ -25,12 +29,14 @@
   simple collapsible
   </button>
 </div>
- 
+
+
 <div id="demo" class="collapse in">
   <div class="container">
       {{> logs}}
   </div>
 </div>
+
 
 </body>
 
@@ -48,6 +54,34 @@
           </li>
           <li><a href="#">About</a></li>
         </ul>
+</template>
+
+<template name="kennels_list">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Владелец</th>
+        <th>Город</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {{#each kennels}}
+        {{> kennel}}
+      {{/each}}
+    </tbody>
+  </table>
+
+</template>
+
+<template name="kennel">
+  <tr class="player">
+    <td class="name"><a href="{{url}}">{{ru_name}} ({{name}})</a></td>
+    <td class="date">{{owner}}</td>
+    <td class="date">{{city}}</td>
+  </tr>
+  
 </template>
 
 <template name="leaderboard">
