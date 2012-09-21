@@ -1,26 +1,23 @@
 <template name="kennels_list">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Название</th>
-        <th>Владелец</th>
-        <th>Город</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      {{#each kennels}}
-        {{> kennel}}
-      {{/each}}
-    </tbody>
-  </table>
 
-</template>
+  <h4>Питомники</h4>
 
-<template name="kennel">
-  <tr class="player">
-    <td class="name"><a href="{{url}}">{{ru_name}} ({{name}})</a></td>
-    <td class="date">{{owner}}</td>
-    <td class="date">{{city}}</td>
-  </tr>
+  <select id="current_kennel">
+
+    {{#each kennels}}
+    
+      <option value="{{_id}}" id="{{_id}}">{{ru_name}} ({{name}})</option>
+    
+    {{/each}}
+  </select><br/>
+    
+    {{#with current_kennel}}  
+      <a href="{{url}}">{{ru_name}} ({{name}})</a>
+      <br/>{{owner}}
+      <br/>{{city}}
+    {{/with}}
+
+    <hr/>
+    
+
 </template>

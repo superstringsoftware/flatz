@@ -5,6 +5,8 @@ _global_logs = new Meteor.Collection 'telescope_logs'
 _global_logs.allow {
   insert:
     () -> true
+  remove: ->
+    true
 }
 
 ###
@@ -41,6 +43,10 @@ class TelescopeLogger
 
   @getLogs: (sort)->
     @_logs.find {}, sort: sort
+
+  @clearLogs: ->
+    @_logs.remove {}
+
 
 
 ###
