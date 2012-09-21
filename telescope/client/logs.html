@@ -1,0 +1,22 @@
+<template name="logs">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each log_messages}}
+          {{> log}}
+        {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="log">
+    <tr class="log">
+        <td class"timestamp">{{timestamp}}</td>
+        <td class="message">{{message}}</td>
+    </tr>
+</template>
