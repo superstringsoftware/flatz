@@ -33,7 +33,13 @@ reset_data = ->
   ]
   
 
-  dogs_tmp = [["Meeka", "brown", "21/12/2002"], ["Uta", "black", "30/10/2004"], ["Toma", "brown", "21/08/2007"]]
+  dogs_tmp = [
+    ["Meeka", "brown", "21/12/2002", "Solntse Baltii"], 
+    ["Uta", "black", "30/10/2004", "Solntse Baltii"], 
+    ["Toma", "brown", "21/08/2007", "Stenveyz"],
+    ["Kika", "black", "11/06/2003", "Stenveyz"],
+    ["Poka", "brown", "23/09/2009", "Stenveyz"]
+  ]
 
   for dg in dogs_tmp
   
@@ -41,6 +47,7 @@ reset_data = ->
       name: dg[0]
       color: dg[1]
       date: dg[2]
+      kennel: dg[3]
     
   for kn in kennels_tmp
     Kennels.insert
