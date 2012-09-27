@@ -1,1 +1,1 @@
-Meteor.accounts.facebook.setSecret('dffb9a4faf6036f83fa3729c6242a4d2');
+//Meteor.accounts.facebook.setSecret('dffb9a4faf6036f83fa3729c6242a4d2');
