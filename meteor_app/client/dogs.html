@@ -19,15 +19,15 @@
       </tr>
     </thead>
     <tbody>
-    {{#each players}}
-      {{> player}}
+    {{#each viewDogs}}
+      {{> dogLine}}
     {{/each}}
     </tbody>
   </table>
 </template>
 
-<template name="player">
-  <tr class="player">
+<template name="dogLine">
+  <tr class="player"  id="{{_id}}">
     <td class="name">{{name}}</td>
     <td class="">{{color}}</td>
     <td class="">{{owner}}</td>

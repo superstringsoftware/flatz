@@ -1,5 +1,5 @@
 _.extend Template.leaderboard,
-  players: ->
+  viewDogs: ->
     sort = undefined
     sort = (if Session.get("sort_by_name") then name: 1 else date: -1)
     Dogs.find {},
@@ -27,10 +27,18 @@ _.extend Template.leaderboard,
 
 
 
-_.extend Template.player,
+_.extend Template.dogLine,
   events:
     "click .remove": ->
       Dogs.remove @_id
+
+    "click .player": (evt)->
+      kid = evt.target.parentElement.id
+      console.log("Clicked from the " + kid + " dog")
+      Session.set("current_dog_id",kid) if kid
+      Router.navigate("dog")
+      Router.dogPage()
+
 
     click: ->
       $(".tooltip").remove()

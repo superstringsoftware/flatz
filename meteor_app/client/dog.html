@@ -1,7 +1,26 @@
 <template name="dogPage">
     {{#with currentDog}}
-        <h4>Смотрим на собаку {{name}}</h4>
-        {{owner}}
+        <h4>{{name}}</h4>
+        Владелец: {{owner}}, заводчик: {{breeder}}
+
 
     {{/with}}
 </template>
+
+<!--
+imported_from: dg[0]
+system: dg[1]
+pedigree: dg[2]
+name: dg[3]
+sex: dg[5]
+birthdate:dg[6]
+color:dg[7]
+microchip:dg[8]
+brand:dg[9]
+father:dg[10]
+mother:dg[11]
+owner:dg[12]
+city:dg[13]
+breeder:dg[14]
+kennel_id:kid
+-->

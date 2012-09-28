@@ -7,3 +7,4 @@ _.extend Template.dogPage,
     console.log("found dog " + cd?.name)
     Session.set("current_dog_id",cd._id) if cd
     cd
+
