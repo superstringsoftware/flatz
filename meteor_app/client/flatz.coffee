@@ -23,7 +23,8 @@ _.extend Template.navbar,
       Session.set "sort_by_name", false
 
     "click .reset_data": ->
+      #create_admin()
       reset_data()
       #console.log TLogger
-      TelescopeLogger.log  "reset_date called on the client"
+      TelescopeLogger.log  "reset_data called on the client"
 
