@@ -4,24 +4,17 @@ Kennels = new Meteor.Collection("kennels")
 
 #publishing collections
 #publishing all kennels (it's not like it's going to be one million of them)
-Meteor.publish 'kennels',
-  () ->
-    Kennels.find {}
+Meteor.publish 'kennels',() ->
+  Kennels.find {}
 
 #publishing only those dogs that belong to a certain kennel
 #!!! may need to change this as for dog show editing functionality we shouldn't be tied to a kennel but work with ALL dogs rather
 Meteor.publish 'dogs', (kennel_id) ->
-  kennel = Kennels.findOne 
-    _id:kennel_id
-  if kennel
-    console.log("Found kennel name: " + kennel.name)
-    Dogs.find 
-      kennel: kennel.name
-
-    
+  Dogs.find 
+    kennel_id: kennel_id
 
 #function that only lets admins do stuff
-require_admin = (userId, docs) ->
+requireAdmin = (userId, docs) ->
   u = Meteor.users.findOne({_id:userId})
   console.log u
   if u.role is "admin"
@@ -33,26 +26,26 @@ require_admin = (userId, docs) ->
 Dogs.allow {
   remove: 
     (userId,docs) ->
-      require_admin(userId,docs)
+      requireAdmin(userId,docs)
   insert: 
     (userId,docs) ->
-      require_admin(userId,docs)
+      requireAdmin(userId,docs)
   update: 
     (userId,docs) ->
-      require_admin(userId,docs)
+      requireAdmin(userId,docs)
   
   }
 
 Kennels.allow {
   remove: 
     (userId,docs) ->
-      require_admin(userId,docs)
+      requireAdmin(userId,docs)
   insert: 
     (userId,docs) ->
-      require_admin(userId,docs)
+      requireAdmin(userId,docs)
   update: 
     (userId,docs) ->
-      require_admin(userId,docs)
+      requireAdmin(userId,docs)
   
   }
 

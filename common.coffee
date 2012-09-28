@@ -40,14 +40,6 @@ reset_data = ->
     ["Kika", "black", "11/06/2003", "Stenveyz"],
     ["Poka", "brown", "23/09/2009", "Stenveyz"]
   ]
-
-  for dg in dogs_tmp
-  
-    Dogs.insert
-      name: dg[0]
-      color: dg[1]
-      date: dg[2]
-      kennel: dg[3]
     
   for kn in kennels_tmp
     Kennels.insert
@@ -56,3 +48,12 @@ reset_data = ->
       owner: kn[2]
       city: kn[3]
       url: kn[4]
+
+  for dg in dogs_tmp
+    kid = Kennels.findOne({name:dg[3]})._id
+    console.log("Found Kennel ID: " + kid)
+    Dogs.insert
+      name: dg[0]
+      color: dg[1]
+      date: dg[2]
+      kennel_id: kid

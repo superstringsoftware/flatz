@@ -23,5 +23,25 @@ _.extend Template.kennels_list,
     "change #current_kennel": ->
       Session.set("current_kennel_id",$("#current_kennel").val())
 
+    "click #add_kennel_button": (evt) ->
+      input = undefined
+      console.log("Add new kennel pressed!")
+      input = $("#kennel_name")
+      if input.val()
+        Kennels.insert
+          name: input.val()
+          ru_name: $("#kennel_ru_name").val()
+          city: $("#kennel_city").val()
+          owner: $("#kennel_owner").val()
+          url: $("#kennel_url").val()
+          
+
+        input.val ""
+        $("#kennel_ru_name").val ""
+        $("#kennel_city").val ""
+        $("#kennel_owner").val ""
+        $("#kennel_url").val ""
+        
+      
 
  
