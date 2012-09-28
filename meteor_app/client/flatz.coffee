@@ -6,14 +6,6 @@ Kennels = new Meteor.Collection("kennels")
 # easy for kennels
 Meteor.subscribe('kennels')
 
-# subscribing to just current kennel's dogs
-Meteor.autosubscribe ->
-  kid = Session.get("current_kennel_id")
-  console.log("Found kennel id:" + kid)
-  Meteor.subscribe 'dogs', kid if kid
-
-
-
 _.extend Template.navbar,
   events:
     "click .sort_by_name": ->
@@ -27,4 +19,31 @@ _.extend Template.navbar,
       reset_data()
       #console.log TLogger
       TelescopeLogger.log  "reset_data called on the client"
+
+#Basic routing support
+FlatzRouter = Backbone.Router.extend
+  routes:
+    "": "mainPage"
+    "dog": "dogPage"
+
+  mainPage: ->
+    console.log("/ route called")
+    Session.set("current_page","mainPage")
+    # subscribing to just current kennel's dogs
+    Meteor.autosubscribe ->
+      kid = Session.get("current_kennel_id")
+      console.log("Found kennel id:" + kid)
+      Meteor.subscribe 'dogs', false, kid if kid
+
+  dogPage: ->
+    console.log("/dog route called")
+    Session.set("current_page","dogPage")
+    Meteor.autosubscribe ->
+      Meteor.subscribe 'dogs', true
+
+
+Router = new FlatzRouter
+
+Meteor.startup ->
+  Backbone.history.start({pushState: true})
 

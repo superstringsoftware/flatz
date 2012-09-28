@@ -5,37 +5,40 @@
 
 <body>
 
-  <div class="container">
+<div class="container">
     <div class="row">
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="navbar-flatz">
-            {{> navbar}}
-            {{> loginButtons}}
-          </div>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="navbar-flatz">
+                    {{> navbar}}
+                    {{> loginButtons}}
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
     <div class="row">
-      
-      <div class="span4">
-        
-          {{> kennels_list}}
-        
-      </div>
 
-      <div class="span1">&nbsp;</div>
+        <div class="span4">
 
-      <div class="span7">
-      
-          {{> leaderboard}}
+            {{> kennels_list}}
 
-      </div>
+        </div>
+
+        <div class="span1">&nbsp;</div>
+
+        <div class="span7">
+            {{{render currentPage}}}
+        </div>
     </div>
-  </div>
 
 </body>
+
+<template name="mainPage">
+
+    {{> leaderboard}}
+
+</template>
+
 
 <template name="navbar">
         <a class="brand" href="#">Flats!</a>
@@ -53,3 +56,6 @@
         </ul>
 </template>
 
+<template name="helloWorld">
+    <h1>Hello World!</h1>
+</template>

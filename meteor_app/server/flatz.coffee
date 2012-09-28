@@ -7,11 +7,13 @@ Kennels = new Meteor.Collection("kennels")
 Meteor.publish 'kennels',() ->
   Kennels.find {}
 
-#publishing only those dogs that belong to a certain kennel
-#!!! may need to change this as for dog show editing functionality we shouldn't be tied to a kennel but work with ALL dogs rather
-Meteor.publish 'dogs', (kennel_id) ->
-  Dogs.find 
-    kennel_id: kennel_id
+#publishing dogs
+Meteor.publish 'dogs', (all, kennel_id) ->
+  if all
+    Dogs.find {}
+  else
+    Dogs.find
+      kennel_id: kennel_id
 
 #function that only lets admins do stuff
 requireAdmin = (userId, docs) ->

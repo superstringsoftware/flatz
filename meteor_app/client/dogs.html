@@ -13,8 +13,8 @@
     <thead>
       <tr>
         <th><a href="#" class="sort_by_name" rel="tooltip" data-original-title="Sort by Name">Name</a></th>
-        <th>Color</th>
-        <th><a href="#" class="sort_by_birthdate" rel="tooltip" data-original-title="Sort by Date of Birth">Birthdate</th>
+        <th>Цвет</th>
+        <th>Владелец</th>
         <th style="width: 20px"></th>
       </tr>
     </thead>
@@ -29,9 +29,27 @@
 <template name="player">
   <tr class="player">
     <td class="name">{{name}}</td>
-    <td class="color">{{color}}</td>
-    <td class="date">{{date}}</td>
+    <td class="">{{color}}</td>
+    <td class="">{{owner}}</td>
     <td><i class="remove icon-remove" rel="tooltip" data-original-title="Delete dog"></i></td>
   </tr>
   {{enable_tooltips}}
 </template>
+
+<!--
+imported_from: dg[0]
+system: dg[1]
+pedigree: dg[2]
+name: dg[3]
+sex: dg[5]
+birthdate:dg[6]
+color:dg[7]
+microchip:dg[8]
+brand:dg[9]
+father:dg[10]
+mother:dg[11]
+owner:dg[12]
+city:dg[13]
+breeder:dg[14]
+kennel_id:kid
+-->
