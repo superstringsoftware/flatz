@@ -20,6 +20,12 @@ _.extend Template.kennels_list,
   	ck
   	
   events:
+    #need some niceties - resetting current kennel to something that makes sense etc
+    "click #remove_kennel": ->
+      kid = Session.get("current_kennel_id")
+      Kennels.remove kid if kid
+      #Kennels.remove _id:current_kennel._id
+
     "change #current_kennel": ->
       Session.set("current_kennel_id",$("#current_kennel").val())
 
