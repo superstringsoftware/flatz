@@ -3,17 +3,24 @@ root = exports ? this
 
 _global_logs = new Meteor.Collection 'telescope_logs'
 
-#very insecure, yes
+#very insecure, yes.
+# TODO: make this configurable and add checking if it's an Auth branch or not (until it makes it to master)
 _global_logs.allow {
   insert:
     () -> true
+  update: ->
+    false
   remove: ->
     true
+
 }
 
 #main and static class implementing very basic logging. using class just to provide some encapsulation basically.
 class TLog
-  #@_instance = undefined
+  @_instance = undefined
+
+  @_getLogger: ->
+    @_instance?=new TLog(TLog.LOGLEVEL_MAX,true)
 
   @LOGLEVEL_FATAL = 0
   @LOGLEVEL_ERROR = 1
@@ -55,6 +62,12 @@ class TLog
   verbose: (msg)->
     @_log(msg,TLog.LOGLEVEL_VERBOSE)
 
+  currentLogLevelName: ->
+    TLog.LOGLEVEL_NAMES[@_currentLogLevel]
+
+  logCount: ->
+    @_logs.find({}).count()
+
   #internal method doing the logging
   _log: (msg, loglevel = 3) ->
 
@@ -79,15 +92,18 @@ class TLog
 
   _convertTimestamp: (timestamp)->
     st = timestamp.getUTCDate() + '/' + timestamp.getUTCMonth() + '/'+timestamp.getUTCFullYear() + ' ' +
-      timestamp.getUTCHours()+ ':' + timestamp.getUTCMinutes() + ':' + timestamp.getUTCSeconds() + ':' + timestamp.getUTCMilliseconds()
+      timestamp.getUTCHours()+ ':' + timestamp.getUTCMinutes() + ':' + timestamp.getUTCSeconds() + '.' + timestamp.getUTCMilliseconds()
 
   _ps: (s)->
     '['+s+']'
 
-  @_getLogs: ->
-    _global_logs.find {}, sort: {timestamp: -1}
+  @_getLogs: (sort)->
+    if sort
+      _global_logs.find({}, sort: sort)
+    else
+      _global_logs.find {}, sort: {timestamp: -1}
 
-  clearLogs: ->
+  clear: ->
     @_logs.remove {}
 
 

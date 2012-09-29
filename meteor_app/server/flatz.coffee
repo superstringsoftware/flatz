@@ -50,7 +50,7 @@ setInsecure = (collection)->
     update: true
 
 Meteor.startup ->
-  TL.info("Firing up in TelescopeLogger",2)
+  TL.info("Firing up in TelescopeLogger")
   #reset_data()  if Dogs.find().count() is 0
   create_admin()
 
