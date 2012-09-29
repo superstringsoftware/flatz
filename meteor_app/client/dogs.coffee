@@ -34,7 +34,7 @@ _.extend Template.dogLine,
 
     "click .player": (evt)->
       kid = evt.target.parentElement.id
-      console.log("Clicked from the " + kid + " dog")
+      TL.info("Clicked from the " + kid + " dog")
       Session.set("current_dog_id",kid) if kid
       Router.navigate("dog")
       Router.dogPage()

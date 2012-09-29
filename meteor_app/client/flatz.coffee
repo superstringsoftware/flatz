@@ -27,16 +27,16 @@ FlatzRouter = Backbone.Router.extend
     "dog": "dogPage"
 
   mainPage: ->
-    console.log("/ route called")
+    TL.info("/ route called")
     Session.set("current_page","mainPage")
     # subscribing to just current kennel's dogs
     Meteor.autosubscribe ->
       kid = Session.get("current_kennel_id")
-      console.log("Found kennel id:" + kid)
+      TL.info("Found kennel id:" + kid)
       Meteor.subscribe 'dogs', false, kid if kid
 
   dogPage: ->
-    console.log("/dog route called")
+    TL.info("/dog route called")
     Session.set("current_page","dogPage")
     Meteor.autosubscribe ->
       Meteor.subscribe 'dogs', true

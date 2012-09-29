@@ -31,7 +31,6 @@ _.extend Template.kennels_list,
 
     "click #add_kennel_button": (evt) ->
       input = undefined
-      console.log("Add new kennel pressed!")
       input = $("#kennel_name")
       if input.val()
         Kennels.insert

@@ -10,15 +10,17 @@ Meteor.publish 'kennels',() ->
 #publishing dogs
 Meteor.publish 'dogs', (all, kennel_id) ->
   if all
+    TL.info "returning ALL dogs"
     Dogs.find {}
   else
+    TL.info "returning dogs for " + kennel_id
     Dogs.find
       kennel_id: kennel_id
 
 #function that only lets admins do stuff
 requireAdmin = (userId, docs) ->
   u = Meteor.users.findOne({_id:userId})
-  console.log u
+  TL.verbose "Found user " + u
   if u?.role is "admin"
     true
   else
@@ -47,13 +49,15 @@ setInsecure = (collection)->
     insert: true
     update: true
 
-
-
 Meteor.startup ->
-  console.log("Firing up")
-  TelescopeLogger.log ("Firing up in TelescopeLogger")
+  TL.info("Firing up in TelescopeLogger",2)
   #reset_data()  if Dogs.find().count() is 0
   create_admin()
+
   setAdminPermissions Dogs
   setAdminPermissions Kennels
   setAdminPermissions Meteor.users
+  ###
+  setInsecure Dogs
+  setInsecure Kennels
+  ###

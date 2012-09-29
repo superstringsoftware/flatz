@@ -1,9 +1,10 @@
 #creating admin user (server only - sends an email to activate). This should be called only once when deploying an app
 #to setup initial admin user
 
+#global logger
+TL = new TLog(TLog.LOGLEVEL_MAX,true)
 
 #TODO: need to fix something's not working!!!
-
 create_admin = ->
   if Meteor.users.find({username: "admin"}).count() is 0
     aid = Meteor.createUser({username: "admin", email: "aantich@gmail.com"},{role:"admin"})
@@ -265,7 +266,7 @@ reset_data = ->
   #["импорт","система","№ родосл","кличка","","пол","дата рожд","окрас","микрочип","клеймо","отец","мать","владелец","город/страна","заводчик"]
   for dg in dogs_tmp
     kid = Kennels.findOne({owner:dg[14]})?._id #? is to ignore if there's no kennel with an owner like that, in that case kid is undefined
-    console.log("Found Kennel ID for adding dogs: " + kid + " dog is " + dg[3])
+    TL.info("Found Kennel ID for adding dogs: " + kid + " dog is " + dg[3])
 
     Dogs.insert
       imported_from: dg[0]
