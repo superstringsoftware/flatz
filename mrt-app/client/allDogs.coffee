@@ -40,7 +40,7 @@ _.extend Template.dogLine,
       "fl-dog-black"
   
   drawSex: (sex)->
-    if sex is "сука" then 'F' else 'M'
+    if sex is "сука" then '/img/glyphicons/png/glyphicons_247_female.png' else '/img/glyphicons/png/glyphicons_246_male.png'
 
 #TODO: need to implement finding dog's id by name. Difficulty is we are only subscribed to the current letter, so need to call a server method.
   findIDbyName: (name)->
