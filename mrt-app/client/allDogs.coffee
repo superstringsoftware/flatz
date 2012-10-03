@@ -1,4 +1,4 @@
-_.extend Template.leaderboard,
+_.extend Template.allDogsPage,
   viewDogs: ->
     sort = undefined
     sort = (if Session.get("sort_by_name") then name: 1 else date: -1)
@@ -6,6 +6,11 @@ _.extend Template.leaderboard,
       sort: sort
 
   events:
+    "click .fl-paginator": (evt)->
+      TL.verbose("Clicked paginator letter " + evt.target.innerText)
+      Session.set("current_doglist_name_letter",evt.target.innerText)
+
+
     "click .sort_by_name": ->
       Session.set "sort_by_name", true
 
@@ -26,15 +31,27 @@ _.extend Template.leaderboard,
         $("#dog_birthdate").val ""
 
 
-###
+
 _.extend Template.dogLine,
+  drawColor: (color)->
+    if color is "ливер"
+      "fl-dog-brown"
+    else
+      "fl-dog-black"
+  
+  drawSex: (sex)->
+    if sex is "сука" then 'F' else 'M'
+
+#TODO: need to implement finding dog's id by name. Difficulty is we are only subscribed to the current letter, so need to call a server method.
+  findIDbyName: (name)->
+
   events:
     "click .remove": ->
       Dogs.remove @_id
 
-    "click .player": (evt)->
-      kid = evt.target.parentElement.id
-      TL.info("Clicked from the " + kid + " dog")
+    "click .fl-dog-name": (evt)->
+      kid = evt.target.id
+      TL.verbose("Clicked from the " + kid + " dog")
       Session.set("current_dog_id",kid) if kid
       Router.navigate("dog")
       Router.dogPage()
@@ -43,9 +60,8 @@ _.extend Template.dogLine,
     click: ->
       $(".tooltip").remove()
 
+  
+
   enable_tooltips: ->
     _.defer ->
       $("[rel=tooltip]").tooltip()
-
-    ""
-###

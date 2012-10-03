@@ -18,30 +18,21 @@
     </div>
     <div class="row">
 
-        <div class="span3">
-
-            {{> kennels_list}}
-
-        </div>
-
-        <div class="span1">&nbsp;</div>
-
-        <div class="span8">
-            {{{render currentPage}}}
-        </div>
-
-
-
+      <div class="span12 fl-main-content">
+        {{{render currentPage}}}
+      </div>
 
     </div>
     
 </div>
-{{>logs_bootstrap}}
+{{> logs_bootstrap}}
 </body>
 
 <template name="mainPage">
 
-    {{> leaderboard}}
+    <ul>
+      <li><a href="/allDogs">All dogs</a></li>
+    </ul>
 
 </template>
 
@@ -64,4 +55,22 @@
 
 <template name="helloWorld">
     <h1>Hello World!</h1>
+</template>
+
+<template name="old_main_page">
+  <!-- OLD SETUP: kennels on the left, dogs on the right -->
+  <div class="row">
+        <div class="span3">
+
+            {{> kennels_list}}
+
+        </div>
+
+        <div class="span1">&nbsp;</div>
+
+        <div class="span8">
+            {{> leaderboard}}
+        </div>
+</div>
+
 </template>

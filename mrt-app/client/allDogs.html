@@ -1,0 +1,98 @@
+<template name="allDogsPage">
+
+<!-- paginator: TODO: rewrite as a Metheor render or something as not all first letters are there -->
+  <div class="fl-paginator">
+    <span class="badge badge-info fl-paginator-letter">A</span>
+    <span class="badge badge-info fl-paginator-letter">B</span>
+    <span class="badge badge-info fl-paginator-letter">C</span>
+    <span class="badge badge-info fl-paginator-letter">D</span>
+    <span class="badge badge-info fl-paginator-letter">E</span>
+    <span class="badge badge-info fl-paginator-letter">F</span>
+    <span class="badge badge-info fl-paginator-letter">G</span>
+    <span class="badge badge-info fl-paginator-letter">H</span>
+    <span class="badge badge-info fl-paginator-letter">I</span>
+    <span class="badge badge-info fl-paginator-letter">J</span>
+    <span class="badge badge-info fl-paginator-letter">K</span>
+    <span class="badge badge-info fl-paginator-letter">L</span>
+    <span class="badge badge-info fl-paginator-letter">M</span>
+    <span class="badge badge-info fl-paginator-letter">N</span>
+    <span class="badge badge-info fl-paginator-letter">O</span>
+    <span class="badge badge-info fl-paginator-letter">P</span>
+    <span class="badge badge-info fl-paginator-letter">Q</span>
+    <span class="badge badge-info fl-paginator-letter">R</span>
+    <span class="badge badge-info fl-paginator-letter">S</span>
+    <span class="badge badge-info fl-paginator-letter">T</span>
+    <span class="badge badge-info fl-paginator-letter">U</span>
+    <span class="badge badge-info fl-paginator-letter">V</span>
+    <span class="badge badge-info fl-paginator-letter">W</span>
+    <span class="badge badge-info fl-paginator-letter">X</span>
+    <span class="badge badge-info fl-paginator-letter">Y</span>
+    <span class="badge badge-info fl-paginator-letter">Z</span>
+  </div>
+  
+  <form class="input-append">
+    <input id="dogName" type="text" placeholder="Name"/>
+      <select id="dogColor">
+          <option value="black">Black</option>
+          <option value="brown">Brown</option>
+          <option value="red" selected="selected">Red</option>
+      </select>
+    <input id="dogBirthdate" type="text" placeholder="Date of birth"/>
+    <button id="addButton" class="btn" type="button">Add Flat</button>
+  </form>
+
+  <table class="table table-condensed fl-table-tiny">
+    <thead>
+      <tr>
+        <th>&nbsp;</th><!-- color & sex -->
+        
+        <th><a href="#" class="sort_by_name" rel="tooltip" data-original-title="Sort by Name">Name</a></th>
+        <th>Владелец</th>
+        <th>Заводчик</th>
+        <th>ДР</th>
+        
+        <th>Отец</th>
+        <th>Мать</th>
+        <th style="width: 20px"></th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each viewDogs}}
+      {{> dogLine}}
+    {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="dogLine">
+  <tr>
+    <td class="{{drawColor color}} fl-dog-color-td">{{drawSex sex}}</td>
+    <td class="fl-dog-name" id="{{_id}}">{{name}}</td>
+    <td class="">{{owner}}</td>
+    <td class="">{{breeder}}</td>
+    <td class="">{{birthdate}}</td>
+    
+    <td class="" id="{{findIDbyName father}}">{{father}}</td>
+    <td class="" id="{{findIDbyName mother}}">{{mother}}</td>
+    <td><i class="remove icon-remove" rel="tooltip" data-original-title="Delete dog"></i></td>
+  </tr>
+  {{enable_tooltips}}
+</template>
+
+<!--
+imported_from: dg[0]
+system: dg[1]
+pedigree: dg[2]
+name: dg[3]
+sex: dg[5]
+birthdate:dg[6]
+color:dg[7]
+microchip:dg[8]
+brand:dg[9]
+father:dg[10]
+mother:dg[11]
+owner:dg[12]
+city:dg[13]
+breeder:dg[14]
+kennel_id:kid
+-->

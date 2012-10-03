@@ -8,14 +8,18 @@ Meteor.publish 'kennels',() ->
   Kennels.find {}
 
 #publishing dogs
-Meteor.publish 'dogs', (all, kennel_id) ->
+Meteor.publish 'dogs', (all, starts_with, kennel_id) ->
   if all
-    TL.info "returning ALL dogs"
+    TL.info "publishing ALL dogs"
     Dogs.find {}
   else
-    TL.info "returning dogs for " + kennel_id
-    Dogs.find
-      kennel_id: kennel_id
+    if starts_with
+      TL.info "publishing dogs for " + starts_with
+      Dogs.find { name : {$regex : "^" + starts_with, $options: 'i'} }
+    else
+      TL.info "returning dogs for " + kennel_id
+      Dogs.find
+        kennel_id: kennel_id
 
 #function that only lets admins do stuff
 requireAdmin = (userId, docs) ->
