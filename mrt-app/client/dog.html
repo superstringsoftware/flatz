@@ -1,0 +1,42 @@
+<template name="dogPage">
+
+    {{#with currentDog}}
+        <h4>{{name}}</h4>
+        <table>
+            <tbody>
+            <tr><td>Владелец:</td> <td>{{owner}}</td></tr>
+            <tr><td>Заводчик:</td> <td>{{breeder}}</td></tr>
+            <tr><td>Система:</td> <td>{{system}}</td></tr>
+            <tr><td>Родословная:</td> <td>{{pedigree}}</td></tr>
+            <tr><td>Пол:</td> <td>{{sex}}</td></tr>
+            <tr><td>Дата рождения:</td> <td>{{birthdate}}</td></tr>
+            <tr><td>Цвет:</td> <td>{{color}}</td></tr>
+            <tr><td>Микрочип:</td> <td>{{microchip}}</td></tr>
+            <tr><td>Клеймо:</td> <td>{{brand}}</td></tr>
+            <tr><td>Отец:</td> <td>{{father}}</td></tr>
+            <tr><td>Мать:</td> <td>{{mother}}</td></tr>
+            <tr><td>Импорт:</td> <td>{{imported_from}}</td></tr>
+            <tr><td>Город:</td> <td>{{city}}</td></tr>
+            </tbody>
+    </table>
+    {{/with}}
+
+</template>
+
+<!--
+imported_from: dg[0]
+system: dg[1]
+pedigree: dg[2]
+name: dg[3]
+sex: dg[5]
+birthdate:dg[6]
+color:dg[7]
+microchip:dg[8]
+brand:dg[9]
+father:dg[10]
+mother:dg[11]
+owner:dg[12]
+city:dg[13]
+breeder:dg[14]
+kennel_id:kid
+-->

@@ -1,0 +1,19 @@
+{
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "auth",
+    "commit": "290dc70766043f2b71d964db78f09319e16a7e5e"
+  },
+  "dependencies": {
+    "basePackages": {
+      "observatory": {}
+    },
+    "packages": {
+      "observatory": {
+        "git": "https://github.com/jhoxray/observatory.git",
+        "tag": "v0.1.6",
+        "commit": "e13149e360d69658cdedfcc1732433acfef911c8"
+      }
+    }
+  }
+}
