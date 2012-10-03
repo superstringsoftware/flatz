@@ -2,8 +2,23 @@
 
     {{#with currentDog}}
         <h4>{{name}}</h4>
-        <table>
+        <table class="table table-hover dogPage">
             <tbody>
+            {{#if isEditing}}
+            <tr><td>Владелец:</td> <td><input type="text" name="owner" value="{{owner}}" autofocus="autofocus"></td></tr>
+            <tr><td>Заводчик:</td> <td><input type="text" name="breeder" value="{{breeder}}"></td></tr>
+            <tr><td>Система:</td> <td><input type="text" name="system" value="{{system}}"></td></tr>
+            <tr><td>Родословная:</td> <td><input type="text" name="pedigree" value="{{pedigree}}"></td></tr>
+            <tr><td>Пол:</td> <td><input type="text" value="{{sex}}" name="sex"></td></tr>
+            <tr><td>Дата рождения:</td> <td><input type="text" name="birthdate" value="{{birthdate}}"></td></tr>
+            <tr><td>Цвет:</td> <td><input type="text" value="{{color}}" name="color"></td></tr>
+            <tr><td>Микрочип:</td> <td><input type="text" value="{{microchip}}" name="microchip"></td></tr>
+            <tr><td>Клеймо:</td> <td><input type="text" value="{{brand}}" name="brand"></td></tr>
+            <tr><td>Отец:</td> <td><input type="text" value="{{father}}" name="father"></td></tr>
+            <tr><td>Мать:</td> <td><input type="text" value="{{mother}}" name="mother"></td></tr>
+            <tr><td>Импорт:</td> <td><input type="text" value="{{imported_from}}" name="imported_from"></td></tr>
+            <tr><td>Город:</td> <td><input type="text" value="{{city}}" name="city"></td></tr>
+            {{else}}
             <tr><td>Владелец:</td> <td>{{owner}}</td></tr>
             <tr><td>Заводчик:</td> <td>{{breeder}}</td></tr>
             <tr><td>Система:</td> <td>{{system}}</td></tr>
@@ -17,10 +32,14 @@
             <tr><td>Мать:</td> <td>{{mother}}</td></tr>
             <tr><td>Импорт:</td> <td>{{imported_from}}</td></tr>
             <tr><td>Город:</td> <td>{{city}}</td></tr>
+            {{/if}}
             </tbody>
     </table>
     {{/with}}
 
+</template>
+
+<template name="dogEditField">
 </template>
 
 <!--

@@ -7,7 +7,7 @@ TL = TLog.getLogger() #(TLog.LOGLEVEL_MAX,true)
 #TODO: need to fix something's not working!!!
 create_admin = ->
   if Meteor.users.find({username: "admin"}).count() is 0
-    aid = Meteor.createUser({username: "admin", email: "aantich@gmail.com"},{role:"admin"})
+    aid = Meteor.createUser({username: "admin", email: "aantich@gmail.com", password: "password"},{role:"admin"})
 
 
 #prepopulating stuff

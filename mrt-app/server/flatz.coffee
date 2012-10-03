@@ -20,10 +20,12 @@ Meteor.publish 'dogs', (all, kennel_id) ->
 #function that only lets admins do stuff
 requireAdmin = (userId, docs) ->
   u = Meteor.users.findOne({_id:userId})
-  TL.verbose "Found user " + u
+  TL.verbose "Found user " + u?._id
   if u?.role is "admin"
+    TL.verbose "allowing the operation as the user is admin"
     true
   else
+    TL.warn "operation disallowed as the user " + u._id + " is not admin"
     false
 
 #set correct permissions that only admin can manipulate
@@ -50,7 +52,7 @@ setInsecure = (collection)->
     update: true
 
 Meteor.startup ->
-  TL.info("Firing up in TelescopeLogger")
+  TL.info("Firing up the Server")
   #reset_data()  if Dogs.find().count() is 0
   create_admin()
 
