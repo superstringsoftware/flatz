@@ -16,9 +16,9 @@ _.extend Template.navbar,
 
     "click .reset_data": ->
       #create_admin()
-      reset_data()
+      #reset_data()
       #console.log TLogger
-      TelescopeLogger.log  "reset_data called on the client"
+      #TelescopeLogger.log  "reset_data called on the client"
 
 #Basic routing support
 FlatzRouter = Backbone.Router.extend
