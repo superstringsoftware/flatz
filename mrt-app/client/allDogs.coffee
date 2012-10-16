@@ -5,6 +5,11 @@ _.extend Template.allDogsPage,
     Dogs.find {},
       sort: sort
 
+  ###
+  created: ->
+    $('#myModal').modal('hide')
+  ###
+
   events:
     "click .fl-paginator": (evt)->
       TL.verbose("Clicked paginator letter " + evt.target.innerText)

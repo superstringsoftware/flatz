@@ -59,3 +59,32 @@ _.extend Template.dogPage,
   				Session.set("editing_dog",false)
   		Meteor.flush()
 
+_.extend Template.newDogModalTemplate,
+
+  events:
+    "click #btnAddNewFlat": (evt)->
+      TL.verbose("Add New Flat clicked")
+      #TODO: need to figure out the correct selector - for cases where we may have multiple elements with a given name!!!
+      fn = (nm)->
+        $("[name*=#{nm}]").val()
+      TL.info("Recording changes to the dog: " + fn("name") + " owned by " + fn("owner"))
+      kid = 
+        Dogs.insert
+          system: fn("system")
+          pedigree: fn("pedigree")
+          name: fn("name")
+          sex: fn("sex")
+          birthdate: fn("birthdate")
+          color: fn("color")
+          microchip: fn("microchip")
+          brand: fn("brand")
+          father: fn("father")
+          mother: fn("mother")
+          owner: fn("owner")
+          city: fn("city")
+          breeder: fn("breeder")
+          imported_from: fn("imported_from")
+      if kid
+        Session.get("current_dog_id", kid)
+        TL.info("Added dog " + kid)
+        

@@ -74,6 +74,49 @@
 <template name="dogEditField">
 </template>
 
+
+<template name="newDogModalTemplate">
+<!-- Button to trigger modal -->
+  <a href="#newDogModal" role="button" class="btn btn-small btn-info" data-toggle="modal">new dog</a>
+  
+
+<!-- Modal -->
+<div class="modal" id="newDogModal" tabindex="-1" role="dialog" aria-labelledby="newDogModalLabel" aria-hidden="true" style="display:none;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="newDogModalLabel">Новый флэт:</h3>
+  </div>
+  <div class="modal-body">
+
+    <table class="table table-hover dogPage" id="newDogModalTable">
+            <tbody>
+            <tr><td>Кличка:</td> <td><input type="text" name="name" value="" autofocus="autofocus"></td></tr>
+            <tr><td>Владелец:</td> <td><input type="text" name="owner" value=""></td></tr>
+            <tr><td>Заводчик:</td> <td><input type="text" name="breeder" value=""></td></tr>
+            <tr><td>Система:</td> <td><input type="text" name="system" value=""></td></tr>
+            <tr><td>Родословная:</td> <td><input type="text" name="pedigree" value=""></td></tr>
+            <tr><td>Пол:</td> <td><input type="text" value="" name="sex"></td></tr>
+            <tr><td>Дата рождения:</td> <td><input type="text" name="birthdate" value=""></td></tr>
+            <tr><td>Цвет:</td> <td><input type="text" value="" name="color"></td></tr>
+            <tr><td>Микрочип:</td> <td><input type="text" value="" name="microchip"></td></tr>
+            <tr><td>Клеймо:</td> <td><input type="text" value="" name="brand"></td></tr>
+            <tr><td>Отец:</td> <td><input type="text" value="" name="father"></td></tr>
+            <tr><td>Мать:</td> <td><input type="text" value="" name="mother"></td></tr>
+            <tr><td>Импорт:</td> <td><input type="text" value="" name="imported_from"></td></tr>
+            <tr><td>Город:</td> <td><input type="text" value="" name="city"></td></tr>
+            
+            </tbody>
+    </table>
+
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-small btn-warning" data-dismiss="modal" aria-hidden="true">cancel</button>
+    <button class="btn btn-small btn-primary" id="btnAddNewFlat" data-dismiss="modal">Add!</button>
+  </div>
+</div>
+</template>
+
 <!--
 imported_from: dg[0]
 system: dg[1]

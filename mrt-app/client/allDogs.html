@@ -29,17 +29,9 @@
     <span class="badge badge-info fl-paginator-letter">Y</span>
     <span class="badge badge-info fl-paginator-letter">Z</span>
   </div>
+
+  {{> newDogModalTemplate}}
   
-  <form class="input-append">
-    <input id="dogName" type="text" placeholder="Name"/>
-      <select id="dogColor">
-          <option value="black">Black</option>
-          <option value="brown">Brown</option>
-          <option value="red" selected="selected">Red</option>
-      </select>
-    <input id="dogBirthdate" type="text" placeholder="Date of birth"/>
-    <button id="addButton" class="btn" type="button">Add Flat</button>
-  </form>
 
   <table class="table table-condensed fl-table-tiny">
     <thead>
