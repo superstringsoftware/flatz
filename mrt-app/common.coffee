@@ -2,16 +2,16 @@
 #to setup initial admin user
 
 #global logger
-TL = TLog.getLogger() #(TLog.LOGLEVEL_MAX,true)
+@TL = TLog.getLogger() #(TLog.LOGLEVEL_MAX,true)
 
 #TODO: need to fix something's not working!!!
-create_admin = ->
+@create_admin = ->
   if Meteor.users.find({username: "admin"}).count() is 0
     aid = Meteor.createUser({username: "admin", email: "aantich@gmail.com", password: "password"},{role:"admin"})
 
 
 #prepopulating stuff
-reset_data = ->
+@reset_data = ->
 
   Dogs.remove {}
   Persons.remove {}

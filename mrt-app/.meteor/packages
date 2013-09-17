@@ -12,3 +12,6 @@ accounts-ui
 accounts-password
 backbone
 observatory
+standard-app-packages
+observatory-apollo
+observatory-galileo

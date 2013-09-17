@@ -1,6 +1,6 @@
-Dogs = new Meteor.Collection("dogs")
-Persons = new Meteor.Collection("persons")
-Kennels = new Meteor.Collection("kennels")
+@Dogs = new Meteor.Collection("dogs")
+@Persons = new Meteor.Collection("persons")
+@Kennels = new Meteor.Collection("kennels")
 
 #subscribing
 # easy for kennels
@@ -56,7 +56,7 @@ FlatzRouter = Backbone.Router.extend
       Meteor.subscribe 'dogs', true
     ###
 
-Router = new FlatzRouter
+@Router = new FlatzRouter
 
 Meteor.startup ->
   Backbone.history.start({pushState: true})
